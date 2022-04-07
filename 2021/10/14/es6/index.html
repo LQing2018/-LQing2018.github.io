@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>es6 | LQing</title><meta name="keywords" content="LQing,Hexo,butterfly"><meta name="author" content="LQing,572298346@qq.com"><meta name="copyright" content="LQing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="📌 最近公司一直在做H5小游戏，我的博客有2个月没怎么更新了 项目中用到了ES6的一些特性 ，就记录一些，随笔。。。  es6新特性：1、向对象添加属性；2、合并对象；3、删除对象的属性；4、动态删除属性；5、调整对象属性的位置；6、默认属性；7、重命名对象的属性；8、条件属性。  1、let constlet 表示申明变量。const 表示申明常量。  常量定义了就不能改了。对象除外，因为对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6">
+<meta property="og:url" content="https://blog.liyushu.cn/2021/10/14/es6/index.html">
+<meta property="og:site_name" content="LQing">
+<meta property="og:description" content="📌 最近公司一直在做H5小游戏，我的博客有2个月没怎么更新了 项目中用到了ES6的一些特性 ，就记录一些，随笔。。。  es6新特性：1、向对象添加属性；2、合并对象；3、删除对象的属性；4、动态删除属性；5、调整对象属性的位置；6、默认属性；7、重命名对象的属性；8、条件属性。  1、let constlet 表示申明变量。const 表示申明常量。  常量定义了就不能改了。对象除外，因为对象">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es6.png">
+<meta property="article:published_time" content="2021-10-14T06:29:27.000Z">
+<meta property="article:modified_time" content="2021-10-25T05:52:04.495Z">
+<meta property="article:author" content="LQing">
+<meta property="article:tag" content="LQing,Hexo,butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es6.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.liyushu.cn/2021/10/14/es6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fce63e5e11797b5f0451a910c2454895";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'es6',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-25 13:52:04'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/08/07/ICOpvXFelmGSM2n.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es6.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LQing</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">es6</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-14T06:29:27.000Z" title="发表于 2021-10-14 14:29:27">2021-10-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-25T05:52:04.495Z" title="更新于 2021-10-25 13:52:04">2021-10-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="es6"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>📌 最近公司一直在做H5小游戏，我的博客有2个月没怎么更新了</p>
+<pre><code>项目中用到了ES6的一些特性 ，就记录一些，随笔。。。
+
+es6新特性：1、向对象添加属性；2、合并对象；3、删除对象的属性；4、动态删除属性；5、调整对象属性的位置；6、默认属性；7、重命名对象的属性；8、条件属性。
+</code></pre>
+<h2 id="1、let-const"><a href="#1、let-const" class="headerlink" title="1、let const"></a>1、let const</h2><pre><code>let 表示申明变量。const 表示申明常量。
+
+常量定义了就不能改了。对象除外，因为对象指向的地址没变。
+const在申明是必须被赋值。
+两者都为块级作用域。
+块级作用域与函数作用域。任何一对花括号（｛和｝）中的语句集都属于一个块，在这之中定义的所有变量在代码块外都是不可见的，我们称之为块级作用域。函数作用域就好理解了，定义在函数中的参数和变量在函数外部是不可见的。
+</code></pre>
+<h2 id="2、模块字符串"><a href="#2、模块字符串" class="headerlink" title="2、模块字符串``"></a>2、模块字符串``</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以使用反引号``来进行字符拼接。$&#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3、解构"><a href="#3、解构" class="headerlink" title="3、解构"></a>3、解构</h2><p>可以使用{}来对数组和对象进行解构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义数组</span></span><br><span class="line"><span class="keyword">const</span> array = [<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;class&#x27;</span>]</span><br><span class="line"><span class="comment">// 数组结构</span></span><br><span class="line"><span class="keyword">const</span> [a,b,c] = array</span><br><span class="line"></span><br><span class="line">cosnt obj = &#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;xiaoming&#x27;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="string">&#x27;12&#x27;</span>,</span><br><span class="line">    <span class="attr">class</span>:<span class="string">&#x27;class2&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> &#123;name , age , <span class="class"><span class="keyword">class</span>&#125; </span>= obj</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、函数的参数默认值"><a href="#4、函数的参数默认值" class="headerlink" title="4、函数的参数默认值"></a>4、函数的参数默认值</h2><p>函数传参可以有默认值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es6</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">text = <span class="string">&#x27;default&#x27;</span></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(text);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、Spread-Rest-操作符-‘…’"><a href="#5、Spread-Rest-操作符-‘…’" class="headerlink" title="5、Spread / Rest 操作符 ‘…’"></a>5、Spread / Rest 操作符 ‘…’</h2><p>Spread / Rest 操作符指的是 …，具体是 Spread 还是 Rest 需要看上下文语境。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">x,y,z</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(x,y,z);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">fun(...arr); <span class="comment">// 1 2 3</span></span><br></pre></td></tr></table></figure>
+<p>当被用于函数传参时，是一个 Rest 操作符：当被用于函数传参时，是一个 Rest 操作符：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(args);</span><br><span class="line">&#125;</span><br><span class="line">fun( <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6、箭头函数"><a href="#6、箭头函数" class="headerlink" title="6、箭头函数"></a>6、箭头函数</h2><p>不需要 function 关键字来创建函数<br>省略 return 关键字<br>this始终指向函数申明时所在作用域下的this值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es5</span></span><br><span class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//es6</span></span><br><span class="line"><span class="keyword">var</span> fn = <span class="function">()=&gt;</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7、for-of"><a href="#7、for-of" class="headerlink" title="7、for of"></a>7、for of</h2><p>for of遍历的是键值对中的值<br>for in遍历的是键值对中的键</p>
+<h2 id="8、promise"><a href="#8、promise" class="headerlink" title="8、promise"></a>8、promise</h2><p>Promise 用于更优雅地处理异步请求。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    resolve(<span class="string">&#x27;成功了！&#x27;</span>)</span><br><span class="line">  &#125;,<span class="number">1000</span>)</span><br><span class="line">  <span class="comment">// reject(&quot;失败了，wuwu&quot;)</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="9、async-await"><a href="#9、async-await" class="headerlink" title="9、async/await"></a>9、async/await</h2><p>比promise更好的解决了回调地狱。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    awiat fn()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="10、Set集合"><a href="#10、Set集合" class="headerlink" title="10、Set集合"></a>10、Set集合</h2><p>存储任何类型的唯一值，即集合中所保存的元素是不重复的。类数组结构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>]</span><br><span class="line"><span class="keyword">let</span> arrNew = <span class="keyword">new</span> <span class="built_in">Set</span>(arr)</span><br><span class="line">arrNew = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<p>类数组不是数组，要转化为数组Array.form(arrNew)这样arrNew才是数组了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:572298346@qq.com">LQing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.liyushu.cn/2021/10/14/es6/">https://blog.liyushu.cn/2021/10/14/es6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.liyushu.cn" target="_blank">LQing</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/15/mysqlPassword/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/mysql.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">mysqlPassword</div></div></a></div><div class="next-post pull-right"><a href="/2021/08/28/shell/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/shell.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">shell的初次见面</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/08/07/ICOpvXFelmGSM2n.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LQing</div><div class="author-info__description">与其临渊慕鱼，不如退而结网</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LQing2018/LQing2018.git"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">井蛙不可语海，夏虫不可语冰。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81let-const"><span class="toc-number">1.</span> <span class="toc-text">1、let const</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%A8%A1%E5%9D%97%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">2.</span> <span class="toc-text">2、模块字符串&#96;&#96;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E8%A7%A3%E6%9E%84"><span class="toc-number">3.</span> <span class="toc-text">3、解构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">4、函数的参数默认值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Spread-Rest-%E6%93%8D%E4%BD%9C%E7%AC%A6-%E2%80%98%E2%80%A6%E2%80%99"><span class="toc-number">5.</span> <span class="toc-text">5、Spread &#x2F; Rest 操作符 ‘…’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">6、箭头函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81for-of"><span class="toc-number">7.</span> <span class="toc-text">7、for of</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81promise"><span class="toc-number">8.</span> <span class="toc-text">8、promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81async-await"><span class="toc-number">9.</span> <span class="toc-text">9、async&#x2F;await</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81Set%E9%9B%86%E5%90%88"><span class="toc-number">10.</span> <span class="toc-text">10、Set集合</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/07/es62/" title="ES6精选方法"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es62.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6精选方法"/></a><div class="content"><a class="title" href="/2022/04/07/es62/" title="ES6精选方法">ES6精选方法</a><time datetime="2022-04-07T01:17:02.000Z" title="发表于 2022-04-07 09:17:02">2022-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/vvp/" title="vvp"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/vvp.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vvp"/></a><div class="content"><a class="title" href="/2022/03/31/vvp/" title="vvp">vvp</a><time datetime="2022-03-31T09:14:34.000Z" title="发表于 2022-03-31 17:14:34">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/vuelist/" title="vue项目目录结构详解"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/vue3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue项目目录结构详解"/></a><div class="content"><a class="title" href="/2022/03/20/vuelist/" title="vue项目目录结构详解">vue项目目录结构详解</a><time datetime="2022-03-20T08:50:56.000Z" title="发表于 2022-03-20 16:50:56">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/25/%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8Deslint%E6%8A%A5%E9%94%99/" title="自动修复eslint报错"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动修复eslint报错"/></a><div class="content"><a class="title" href="/2021/10/25/%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8Deslint%E6%8A%A5%E9%94%99/" title="自动修复eslint报错">自动修复eslint报错</a><time datetime="2021-10-25T01:51:23.000Z" title="发表于 2021-10-25 09:51:23">2021-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/15/mysqlPassword/" title="mysqlPassword"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/mysql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mysqlPassword"/></a><div class="content"><a class="title" href="/2021/10/15/mysqlPassword/" title="mysqlPassword">mysqlPassword</a><time datetime="2021-10-15T05:39:44.000Z" title="发表于 2021-10-15 13:39:44">2021-10-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By LQing</div><div class="framework-info"><span>BY </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>DIY </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<span class="footer-separator">|</span></a><span>备案 </span><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">豫ICP备2021000017号</a></div><div class="footer_custom_text">每一天都是新的一天</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-dhi3ovfs5-572298346-qqcom.vercel.app',
+      region: 'ap-shanghai'
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-dhi3ovfs5-572298346-qqcom.vercel.app',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

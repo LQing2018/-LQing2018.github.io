@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>jquery.cookie.js 的介绍与使用方法 | LQing</title><meta name="keywords" content="LQing,Hexo,butterfly"><meta name="author" content="LQing,572298346@qq.com"><meta name="copyright" content="LQing"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="✨ jquery.cookie.js 的介绍与使用方法  什么是 cookie？cookie 就是页面用来保存信息，比如自动登录、记住用户名等等。 cookie 的特点同个网站中所有的页面共享一套 cookie cookie 有数量、大小限制 cookie 有过期时间jquery.cookie.js 是一款轻量级的 cookie 插件，可以读取，写入和删除 cookie。本文主要针对  jquer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jquery.cookie.js 的介绍与使用方法">
+<meta property="og:url" content="https://blog.liyushu.cn/2021/07/21/jquery/index.html">
+<meta property="og:site_name" content="LQing">
+<meta property="og:description" content="✨ jquery.cookie.js 的介绍与使用方法  什么是 cookie？cookie 就是页面用来保存信息，比如自动登录、记住用户名等等。 cookie 的特点同个网站中所有的页面共享一套 cookie cookie 有数量、大小限制 cookie 有过期时间jquery.cookie.js 是一款轻量级的 cookie 插件，可以读取，写入和删除 cookie。本文主要针对  jquer">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/jquer.png">
+<meta property="article:published_time" content="2021-07-21T01:20:50.000Z">
+<meta property="article:modified_time" content="2021-10-08T06:33:50.353Z">
+<meta property="article:author" content="LQing">
+<meta property="article:tag" content="LQing,Hexo,butterfly">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/jquer.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://blog.liyushu.cn/2021/07/21/jquery/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fce63e5e11797b5f0451a910c2454895";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'jquery.cookie.js 的介绍与使用方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-08 14:33:50'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/08/07/ICOpvXFelmGSM2n.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/jquer.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LQing</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">jquery.cookie.js 的介绍与使用方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-21T01:20:50.000Z" title="发表于 2021-07-21 09:20:50">2021-07-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-08T06:33:50.353Z" title="更新于 2021-10-08 14:33:50">2021-10-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="jquery.cookie.js 的介绍与使用方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>✨ <a href>jquery.cookie.js 的介绍与使用方法</a> </p>
+<h2 id="什么是-cookie？"><a href="#什么是-cookie？" class="headerlink" title="什么是 cookie？"></a>什么是 cookie？</h2><p>cookie 就是页面用来保存信息，比如自动登录、记住用户名等等。</p>
+<h2 id="cookie-的特点"><a href="#cookie-的特点" class="headerlink" title="cookie 的特点"></a>cookie 的特点</h2><pre><code>同个网站中所有的页面共享一套 cookie
+cookie 有数量、大小限制
+cookie 有过期时间jquery.cookie.js 是一款轻量级的 cookie 插件，可以读取，写入和删除 cookie。本文主要针对
+</code></pre>
+<p>jquery.cookie.js 的用法进行详细的介绍。</p>
+<h2 id="jquery-cookie-js-使用方法"><a href="#jquery-cookie-js-使用方法" class="headerlink" title="jquery.cookie.js 使用方法"></a>jquery.cookie.js 使用方法</h2><p>Cookies</p>
+<p>定义：让网站服务器把少量数据储存到客户端的硬盘或内存，从客户端的硬盘读取数据的一种技术；</p>
+<p>下载与引入:jquery.cookie.js 基于 jquery；先引入 jquery，再引入：jquery.cookie.js；</p>
+<p>下载：<a target="_blank" rel="noopener" href="http://plugins.jquery.com/cookie/">http://plugins.jquery.com/cookie/</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;js/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/jquery.cookie.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h4><h6 id="1-添加一个”会话-cookie”"><a href="#1-添加一个”会话-cookie”" class="headerlink" title="1. 添加一个”会话 cookie”"></a>1. 添加一个”会话 cookie”</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>, <span class="string">&quot;the_value&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注：如果 $.cookie 没有第三个参数，那么当浏览器关闭时，该 cookie 将会自动删除。</p>
+<p>这里没有指明 cookie 有效时间，所创建的 cookie 有效期默认到用户关闭浏览器为止，所以被称为 “会话 cookie（session cookie）”</p>
+<h6 id="2-创建一个-cookie-并设置有效时间为-7-天"><a href="#2-创建一个-cookie-并设置有效时间为-7-天" class="headerlink" title="2. 创建一个 cookie 并设置有效时间为 7 天"></a>2. 创建一个 cookie 并设置有效时间为 7 天</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>, <span class="string">&quot;the_value&quot;</span>, &#123; <span class="attr">expires</span>: <span class="number">7</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注：$.cookie 第三个参数是一个对象，除了可以设置有效期（expires: 7），还可以设置有效路径（path: ‘/‘）、有效域（domain: ‘jquery.com’）及安全性（secure: true）。</p>
+<p>这里指明了 cookie 有效时间，所创建的 cookie 被称为“持久 cookie （persistent cookie）”。注意单位是：天；</p>
+<h6 id="3-创建一个-cookie-并设置-cookie-的有效路径"><a href="#3-创建一个-cookie-并设置-cookie-的有效路径" class="headerlink" title="3. 创建一个 cookie 并设置 cookie 的有效路径"></a>3. 创建一个 cookie 并设置 cookie 的有效路径</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>, <span class="string">&quot;the_value&quot;</span>, &#123; <span class="attr">expires</span>: <span class="number">7</span>, <span class="attr">path</span>: <span class="string">&quot;/&quot;</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在默认情况下，只有设置 cookie 的网页才能读取该 cookie。如果想让一个页面读取另一个页面设置的 cookie，必须设置 cookie 的路径。cookie 的路径用于设置能够读取 cookie 的顶级目录。将这个路径设置为网站的根目录，可以让所有网页都能互相读取 cookie （一般不要这样设置，防止出现冲突）。</p>
+<h6 id="4-读取-cookie"><a href="#4-读取-cookie" class="headerlink" title="4. 读取 cookie"></a>4. 读取 cookie</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注：如果没有该 cookie，返回 null。</p>
+<h6 id="5-删除-cookie"><a href="#5-删除-cookie" class="headerlink" title="5. 删除 cookie"></a>5. 删除 cookie</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>, <span class="literal">null</span>); <span class="comment">//通过传递null作为cookie的值即可</span></span><br></pre></td></tr></table></figure>
+
+<p>我们只需要给需要删除的 cookie 设置为 null，就可以删除该 cookie。</p>
+<h6 id="6-可选参数"><a href="#6-可选参数" class="headerlink" title="6.可选参数"></a>6.可选参数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(<span class="string">&quot;the_cookie&quot;</span>, <span class="string">&quot;the_value&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">expires</span>: <span class="number">7</span>,</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">  <span class="attr">domain</span>: <span class="string">&quot;jquery.com&quot;</span>,</span><br><span class="line">  <span class="attr">secure</span>: <span class="literal">true</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>expires：（Number|Date）有效期；设置一个整数时，单位是天；也可以设置一个日期对象作为 Cookie 的过期日期；</li>
+<li>path：（String）创建该 Cookie 的页面路径；</li>
+<li>domain：（String）创建该 Cookie 的页面域名；</li>
+<li>secure：（Booblean）如果设为 true，那么此 Cookie 的传输会要求一个安全协议，例如：HTTPS；</li>
+</ul>
+<h5 id="最后附上源代码："><a href="#最后附上源代码：" class="headerlink" title="最后附上源代码："></a>最后附上源代码：</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Cookie plugin</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Copyright (c) 2006 Klaus Hartl (stilbuero.de)</span></span><br><span class="line"><span class="comment"> * Dual licensed under the MIT and GPL licenses:</span></span><br><span class="line"><span class="comment"> * http://www.opensource.org/licenses/mit-license.php</span></span><br><span class="line"><span class="comment"> * http://www.gnu.org/licenses/gpl.html</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Create a cookie with the given name and value and other optional parameters.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@example </span>$.cookie(&#x27;the_cookie&#x27;, &#x27;the_value&#x27;);</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc </span>Set the value of a cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@example </span>$.cookie(&#x27;the_cookie&#x27;, &#x27;the_value&#x27;, &#123; expires: 7, path: &#x27;/&#x27;, domain: &#x27;jquery.com&#x27;, secure: true &#125;);</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc </span>Create a cookie with all available options.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@example </span>$.cookie(&#x27;the_cookie&#x27;, &#x27;the_value&#x27;);</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc </span>Create a session cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@example </span>$.cookie(&#x27;the_cookie&#x27;, null);</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc </span>Delete a cookie by passing null as value. Keep in mind that you have to use the same path and domain</span></span><br><span class="line"><span class="comment"> * used when the cookie was set.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>String name The name of the cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>String value The value of the cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>Object options An object literal containing key/value pairs to provide optional cookie attributes.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@option </span>Number|Date expires Either an integer specifying the expiration date from now on in days or a Date object.</span></span><br><span class="line"><span class="comment"> *    If a negative value is specified (e.g. a date in the past), the cookie will be deleted.</span></span><br><span class="line"><span class="comment"> *    If set to null or omitted, the cookie will be a session cookie and will not be retained</span></span><br><span class="line"><span class="comment"> *    when the the browser exits.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@option </span>String path The value of the path atribute of the cookie (default: path of page that created the cookie).</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@option </span>String domain The value of the domain attribute of the cookie (default: domain of page that created the cookie).</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@option </span>Boolean secure If true, the secure attribute of the cookie will be set and the cookie transmission will</span></span><br><span class="line"><span class="comment"> *   require a secure protocol (like HTTPS).</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type <span class="variable">undefined</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@name </span>$.cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@cat </span>Plugins/Cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author </span>Klaus Hartl/klaus.hartl<span class="doctag">@stilbuero</span>.de</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Get the value of a cookie with the given name.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@example </span>$.cookie(&#x27;the_cookie&#x27;);</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@desc </span>Get the value of a cookie.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>String name The name of the cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return </span>The value of the cookie.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@type <span class="variable">String</span></span></span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@name </span>$.cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@cat </span>Plugins/Cookie</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author </span>Klaus Hartl/klaus.hartl<span class="doctag">@stilbuero</span>.de</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">jQuery.cookie = <span class="function"><span class="keyword">function</span> (<span class="params">name, value, options</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value != <span class="string">&quot;undefined&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// name and value given, set cookie</span></span><br><span class="line">    options = options || &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (value === <span class="literal">null</span>) &#123;</span><br><span class="line">      value = <span class="string">&quot;&quot;</span>;</span><br><span class="line">      options = $.extend(&#123;&#125;, options); <span class="comment">// clone object since it&#x27;s unexpected behavior if the expired property were changed</span></span><br><span class="line">      options.expires = -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> expires = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      options.expires &amp;&amp;</span><br><span class="line">      (<span class="keyword">typeof</span> options.expires == <span class="string">&quot;number&quot;</span> || options.expires.toUTCString)</span><br><span class="line">    ) &#123;</span><br><span class="line">      <span class="keyword">var</span> date;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">typeof</span> options.expires == <span class="string">&quot;number&quot;</span>) &#123;</span><br><span class="line">        date = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">        date.setTime(date.getTime() + options.expires * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        date = options.expires;</span><br><span class="line">      &#125;</span><br><span class="line">      expires = <span class="string">&quot;; expires=&quot;</span> + date.toUTCString(); <span class="comment">// use expires attribute, max-age is not supported by IE</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// NOTE Needed to parenthesize options.path and options.domain</span></span><br><span class="line">    <span class="comment">// in the following expressions, otherwise they evaluate to undefined</span></span><br><span class="line">    <span class="comment">// in the packed version for some reason...</span></span><br><span class="line">    <span class="keyword">var</span> path = options.path ? <span class="string">&quot;; path=&quot;</span> + options.path : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> domain = options.domain ? <span class="string">&quot;; domain=&quot;</span> + options.domain : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> secure = options.secure ? <span class="string">&quot;; secure&quot;</span> : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="built_in">document</span>.cookie = [</span><br><span class="line">      name,</span><br><span class="line">      <span class="string">&quot;=&quot;</span>,</span><br><span class="line">      <span class="built_in">encodeURIComponent</span>(value),</span><br><span class="line">      expires,</span><br><span class="line">      path,</span><br><span class="line">      domain,</span><br><span class="line">      secure,</span><br><span class="line">    ].join(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// only name given, get cookie</span></span><br><span class="line">    <span class="keyword">var</span> cookieValue = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.cookie &amp;&amp; <span class="built_in">document</span>.cookie != <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> cookies = <span class="built_in">document</span>.cookie.split(<span class="string">&quot;;&quot;</span>);</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; cookies.length; i++) &#123;</span><br><span class="line">        <span class="keyword">var</span> cookie = jQuery.trim(cookies[i]);</span><br><span class="line">        <span class="comment">// Does this cookie string begin with the name we want?</span></span><br><span class="line">        <span class="keyword">if</span> (cookie.substring(<span class="number">0</span>, name.length + <span class="number">1</span>) == name + <span class="string">&quot;=&quot;</span>) &#123;</span><br><span class="line">          cookieValue = <span class="built_in">decodeURIComponent</span>(cookie.substring(name.length + <span class="number">1</span>));</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cookieValue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="感激"><a href="#感激" class="headerlink" title="感激"></a>感激</h5></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:572298346@qq.com">LQing</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://blog.liyushu.cn/2021/07/21/jquery/">https://blog.liyushu.cn/2021/07/21/jquery/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.liyushu.cn" target="_blank">LQing</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/jquer.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/07/28/hello-world/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/hexo.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello Hexo</div></div></a></div><div class="next-post pull-right"><a href="/2021/07/16/echarts/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/echats.gif" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Echarts数据可视化legend图例属性</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/08/07/ICOpvXFelmGSM2n.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LQing</div><div class="author-info__description">与其临渊慕鱼，不如退而结网</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LQing2018/LQing2018.git"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">井蛙不可语海，夏虫不可语冰。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-cookie%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是 cookie？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cookie-%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">cookie 的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jquery-cookie-js-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">jquery.cookie.js 使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">3.0.1.</span> <span class="toc-text">使用：</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E2%80%9D%E4%BC%9A%E8%AF%9D-cookie%E2%80%9D"><span class="toc-number">3.0.1.0.1.</span> <span class="toc-text">1. 添加一个”会话 cookie”</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-cookie-%E5%B9%B6%E8%AE%BE%E7%BD%AE%E6%9C%89%E6%95%88%E6%97%B6%E9%97%B4%E4%B8%BA-7-%E5%A4%A9"><span class="toc-number">3.0.1.0.2.</span> <span class="toc-text">2. 创建一个 cookie 并设置有效时间为 7 天</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-cookie-%E5%B9%B6%E8%AE%BE%E7%BD%AE-cookie-%E7%9A%84%E6%9C%89%E6%95%88%E8%B7%AF%E5%BE%84"><span class="toc-number">3.0.1.0.3.</span> <span class="toc-text">3. 创建一个 cookie 并设置 cookie 的有效路径</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#4-%E8%AF%BB%E5%8F%96-cookie"><span class="toc-number">3.0.1.0.4.</span> <span class="toc-text">4. 读取 cookie</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#5-%E5%88%A0%E9%99%A4-cookie"><span class="toc-number">3.0.1.0.5.</span> <span class="toc-text">5. 删除 cookie</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#6-%E5%8F%AF%E9%80%89%E5%8F%82%E6%95%B0"><span class="toc-number">3.0.1.0.6.</span> <span class="toc-text">6.可选参数</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E9%99%84%E4%B8%8A%E6%BA%90%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">3.0.1.1.</span> <span class="toc-text">最后附上源代码：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%84%9F%E6%BF%80"><span class="toc-number">3.0.1.2.</span> <span class="toc-text">感激</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/04/07/es62/" title="ES6精选方法"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/es62.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ES6精选方法"/></a><div class="content"><a class="title" href="/2022/04/07/es62/" title="ES6精选方法">ES6精选方法</a><time datetime="2022-04-07T01:17:02.000Z" title="发表于 2022-04-07 09:17:02">2022-04-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/31/vvp/" title="vvp"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/vvp.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vvp"/></a><div class="content"><a class="title" href="/2022/03/31/vvp/" title="vvp">vvp</a><time datetime="2022-03-31T09:14:34.000Z" title="发表于 2022-03-31 17:14:34">2022-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/03/20/vuelist/" title="vue项目目录结构详解"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/vue3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue项目目录结构详解"/></a><div class="content"><a class="title" href="/2022/03/20/vuelist/" title="vue项目目录结构详解">vue项目目录结构详解</a><time datetime="2022-03-20T08:50:56.000Z" title="发表于 2022-03-20 16:50:56">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/25/%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8Deslint%E6%8A%A5%E9%94%99/" title="自动修复eslint报错"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动修复eslint报错"/></a><div class="content"><a class="title" href="/2021/10/25/%E8%87%AA%E5%8A%A8%E4%BF%AE%E5%A4%8Deslint%E6%8A%A5%E9%94%99/" title="自动修复eslint报错">自动修复eslint报错</a><time datetime="2021-10-25T01:51:23.000Z" title="发表于 2021-10-25 09:51:23">2021-10-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/10/15/mysqlPassword/" title="mysqlPassword"><img src="https://cdn.jsdelivr.net/gh/LQing2018/LQing2018.github.io@master/img/mysql.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="mysqlPassword"/></a><div class="content"><a class="title" href="/2021/10/15/mysqlPassword/" title="mysqlPassword">mysqlPassword</a><time datetime="2021-10-15T05:39:44.000Z" title="发表于 2021-10-15 13:39:44">2021-10-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By LQing</div><div class="framework-info"><span>BY </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>DIY </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly<span class="footer-separator">|</span></a><span>备案 </span><a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">豫ICP备2021000017号</a></div><div class="footer_custom_text">每一天都是新的一天</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-dhi3ovfs5-572298346-qqcom.vercel.app',
+      region: 'ap-shanghai'
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-dhi3ovfs5-572298346-qqcom.vercel.app',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
